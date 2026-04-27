@@ -7,7 +7,8 @@ import java.time.*;
 public class MenuLogic
 {
     static Scanner input = new Scanner(System.in);
-    //static ArrayList<LedgerItem> currentLedger = new ArrayList<>();
+    //static ArrayList<LedgerItem> startLedger = new ArrayList<>();
+    //static LedgerManagement currentLedger = new LedgerManagement(startLedger);
 
     public static void main()
     {
@@ -20,7 +21,8 @@ public class MenuLogic
         System.out.println("""
                 LEDGER MANAGEMENT APP:
                 
-                Please enter one of the following options (1, 2, 3, or 0: 
+                Please enter one of the following options 
+                (1, 2, 3, or 0):
                 
                 1) Add a purchase to the ledger
                 2) Add a payment/invoice to the ledger
@@ -88,9 +90,110 @@ public class MenuLogic
 
         LocalDateTime currentTime = LocalDateTime.now();
 
-        //LedgerItem currentItem = new LedgerItem(currentTime, description, vendor, amount);
-        //currentItem.setDateTime();
+        //soutf("\nCreating an entry for $%.2f from $s with a description of: $s", amount, description);
 
+        //I want the date to be current in case user spends time lingering on this option, log
+        //the time of confirmation, will have to add a loop for multiple additions later, currentItem
+        //will be in scope due to recursion(?)
 
+        System.out.println("""
+                Would you like to confirm or retry entry?
+                
+                Please enter 1 or 2.
+                
+                1) Confirm entry
+                2) Make a correction""");
+
+        String confirm = input.nextLine();
+
+        switch (confirm)
+        {
+            case "1":
+                //LocalDateTime currentTime = LocalDateTime.now();
+                //LedgerItem currentItem = new LedgerItem(currentTime, description, vendor, amount);
+                //currentItem.setDateTime();
+                //startLedger.add(currentItem); //currentLedger.getLedger.add(currentItem);
+                //shall i write to .csv or save until before exiting?
+
+                System.out.println("Successfully added entry to ledger. Returning to home menu.");
+                homeScreen();
+                break;
+
+            case "2":
+                System.out.println("Trying again...");
+                addToLedgerScreen(choice);
+
+            default:
+                //when adding loop you can ask for valid input but not necessary for MVP
+                System.out.println("Trying again...");
+                addToLedgerScreen(choice);
+        }
+
+    }
+
+    public static void ledgerSearchScreen()
+    {
+        System.out.println("""
+                Which part of the ledger would you like to view?
+                
+                Please enter one of the following options
+                (1, 2, 3, 4, 5, 9, or 0):
+                
+                1) Display entire ledger
+                2) Transactions: Month to Today's Date
+                3) Transactions: Year to Today's Date
+                4) Transactions: Last Month
+                5) Transactions: Last Year
+                
+                9) Search by vendor
+                
+                0) Return to home screen\n""");
+
+        String userChoice = input.nextLine();
+
+        switch(userChoice)
+        {
+            case "1":
+                //currentLedger.displayAll();
+                ledgerSearchScreen();
+                //press enter to continue would be a good quality of life feature
+                break;
+
+            case "2":
+                //currentLedger.displayTimePurchase(2);
+                ledgerSearchScreen();
+                //""
+                break;
+
+            case "3":
+                //currentLedger.displayTimePurchase(3);
+                ledgerSearchScreen();
+                //""
+                break;
+
+            case "4":
+                //currentLedger.displayTimePurchase(4);
+                ledgerSearchScreen();
+                //""
+                break;
+
+            case "5":
+                //currentLedger.displayTimePurchase(5);
+                ledgerSearchScreen();
+                //""
+                break;
+
+            case "9":
+                System.out.println("\nWhat is the name of the vendor you would like to search for?\n");
+
+                String userVendor = input.nextLine();
+                //displayVendorSearch(userVendor);
+                //""
+                break;
+
+            case "0":
+                homeScreen();
+                break;
+        }
     }
 }
