@@ -35,15 +35,15 @@ public class MenuLogic
         switch (userInput)
         {
             case "1":
-                //addToLedgerScreen(1)
+                addToLedgerScreen(1);
                 break;
 
             case "2":
-                //addToLedgerScreen(2)
+                addToLedgerScreen(2);
                 break;
 
             case "3":
-                //ledgerSearchScreen()
+                ledgerSearchScreen();
                 break;
 
             case "0":
@@ -66,13 +66,13 @@ public class MenuLogic
         switch (choice)
         {
             case 1:
-                System.out.println("How much did you spend?");
+                System.out.println("How much did you spend?\n");
                 //double input exception handler goes here
                 amount = input.nextDouble();
                 break;
 
             case 2:
-                System.out.println("How much did were you paid?");
+                System.out.println("How much did were you paid?\n");
                 //double input exception handler goes here
                 amount = input.nextDouble();
                 break;
@@ -83,6 +83,7 @@ public class MenuLogic
         }
 
         System.out.println("\nWhat vendor/person did you have the transaction with?\n");
+        input.nextLine();
         String vendor = input.nextLine();
 
         System.out.println("\nPlease enter a description for the transaction: \n");
@@ -97,12 +98,12 @@ public class MenuLogic
         //will be in scope due to recursion(?)
 
         System.out.println("""
-                Would you like to confirm or retry entry?
+                \nWould you like to confirm or retry entry?
                 
                 Please enter 1 or 2.
                 
                 1) Confirm entry
-                2) Make a correction""");
+                2) Make a correction\n""");
 
         String confirm = input.nextLine();
 
@@ -122,11 +123,13 @@ public class MenuLogic
             case "2":
                 System.out.println("Trying again...");
                 addToLedgerScreen(choice);
+                break;
 
             default:
                 //when adding loop you can ask for valid input but not necessary for MVP
                 System.out.println("Trying again...");
                 addToLedgerScreen(choice);
+                break;
         }
 
     }
@@ -189,6 +192,7 @@ public class MenuLogic
                 String userVendor = input.nextLine();
                 //displayVendorSearch(userVendor);
                 //""
+                ledgerSearchScreen();
                 break;
 
             case "0":
