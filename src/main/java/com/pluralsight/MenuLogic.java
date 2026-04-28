@@ -15,7 +15,6 @@ public class MenuLogic
 
     public static void main()
     {
-        //add creating arraylist function to update
         homeScreen();
     }
 

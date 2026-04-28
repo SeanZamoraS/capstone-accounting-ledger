@@ -25,6 +25,7 @@ public class LedgerManagement
 
     //getter(used) + setter(should be unused?)
     public ArrayList<LedgerItem> getCompleteLedger() {return this.completeLedger;}
+    public ArrayList<LedgerItem> getModifiedLedger() {return this.modifiedLedger;}
     public void setCompleteLedger(ArrayList<LedgerItem>
                                           completeLedger) {this.completeLedger = completeLedger;}
 

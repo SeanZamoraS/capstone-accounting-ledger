@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.nio.Buffer;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.*;
 import java.time.*;
@@ -23,6 +24,8 @@ public class LedgerItem
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
+
+        this.assignDateTimeFromLDTObject();
     }
 
     public LedgerItem(String id, String date, String time, String description,
@@ -110,12 +113,15 @@ public class LedgerItem
 
     private void assignDateTimeFromLDTObject()
     {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime itemTime = this.getCurrentTime();
-        String sItemTime = itemTime.toString();
 
+        String sItemTime = itemTime.format(formatter);
 
+        String[] dateAndTime = sItemTime.split(" ");
 
-
+        this.date = dateAndTime[0];
+        this.time = dateAndTime[1];
     }
 
 }
