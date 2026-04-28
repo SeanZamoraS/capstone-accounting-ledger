@@ -21,6 +21,7 @@ public class MenuLogic
     public static void homeScreen()
     { //using recursion for menus for now for MVP purposes, change to while later(?)
         System.out.println("""
+                
                 LEDGER MANAGEMENT APP:
                 
                 Please enter one of the following options 
@@ -68,7 +69,7 @@ public class MenuLogic
         switch (choice)
         {
             case 1:
-                System.out.println("How much did you spend?\n");
+                System.out.println("How much did you spend? (positive number)\n");
                 //double input exception handler goes here
                 amount = input.nextDouble();
                 break;
@@ -91,13 +92,8 @@ public class MenuLogic
         System.out.println("\nPlease enter a description for the transaction: \n");
         String description = input.nextLine();
 
-        LocalDateTime currentTime = LocalDateTime.now();
+        System.out.printf("\nCreating an entry for $%.2f from %s with a description of: %s\n", amount, vendor, description);
 
-        System.out.printf("\nCreating an entry for $%.2f from %s with a description of: %s", amount, vendor, description);
-
-        //I want the date to be current in case user spends time lingering on this option, log
-        //the time of confirmation, will have to add a loop for multiple additions later, currentItem
-        //will be in scope due to recursion(?)
 
         System.out.println("""
                 \nWould you like to confirm or retry entry?
@@ -111,23 +107,10 @@ public class MenuLogic
 
         switch (confirm)
         {
-            case "1": //move to a method?
+            case "1":
                 try
                 {
-                    FileOutputStream fileWriter = new FileOutputStream("transactions.csv", true);
-                    PrintStream printer = new PrintStream(fileWriter);
-
-                    LocalDateTime itemTime = LocalDateTime.now();
-                    LedgerItem currentItem = new LedgerItem(currentLedger.returnNextID(), itemTime, description, vendor, amount);
-                    currentLedger.getCompleteLedger().add(currentItem); //necessary or not? updating .csv + createLedger() alternatively
-                    //shall i write to .csv or wait until before exiting?
-
-                    printer.printf("\n%s|%s|%s|%s|%s|%.2f", currentItem.getID(), currentItem.getDate(),
-                    currentItem.getTime(), currentItem.getDescription(), currentItem.getVendor(),
-                            currentItem.getAmount());
-
-                    int element = currentLedger.getCompleteLedger().size();
-                    currentLedger.getCompleteLedger().get(element).displayItem();;
+                    currentLedger.writeToLedger(choice, description, vendor, amount);
 
                     System.out.println("Successfully added entry to ledger. Returning to home menu.");
                     homeScreen();
@@ -135,7 +118,6 @@ public class MenuLogic
                 }
                 catch (Exception e)
                 {
-                    System.out.println("Something went wrong. Try again.");
                     addToLedgerScreen(choice);
                     break;
                 }

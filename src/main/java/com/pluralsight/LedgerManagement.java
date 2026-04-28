@@ -46,4 +46,43 @@ public class LedgerManagement
         int iLastID = Integer.parseInt(lastID) + 1; //I don't know if you need the +1/-1 technically but it makes me feel better
         return Integer.toString(iLastID);
     }
+
+    public void writeToLedger(int choice, String description, String vendor, double amount)
+    {
+        try
+        {
+            FileOutputStream fileWriter = new FileOutputStream("transactions.csv", true);
+            PrintStream printer = new PrintStream(fileWriter);
+
+            LocalDateTime itemTime = LocalDateTime.now();
+
+
+            LedgerItem currentItem = null;
+            if (choice == 1)
+            {
+                amount = amount * -1;
+                currentItem = new LedgerItem(this.returnNextID(), itemTime, description, vendor, amount);
+            }
+            else if (choice == 2)
+            {
+                currentItem = new LedgerItem(this.returnNextID(), itemTime, description, vendor, amount);
+            }
+            this.getCompleteLedger().add(currentItem); //necessary or not? updating .csv + createLedger() alternatively
+
+            printer.printf("\n%s|%s|%s|%s|%s|%.2f", currentItem.getID(), currentItem.getDate(),
+                    currentItem.getTime(), currentItem.getDescription(), currentItem.getVendor(),
+                    currentItem.getAmount());
+
+            int element = this.getCompleteLedger().size();
+            System.out.println("\nHere is the new entry:");
+            this.getCompleteLedger().get(element - 1).displayItem();;
+        }
+
+        catch (Exception e)
+        {
+            System.out.println("Something went wrong. Try again.");
+            e.printStackTrace();
+        }
+
+    }
 }
