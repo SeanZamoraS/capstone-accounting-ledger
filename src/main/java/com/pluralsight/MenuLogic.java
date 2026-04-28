@@ -93,7 +93,7 @@ public class MenuLogic
 
         LocalDateTime currentTime = LocalDateTime.now();
 
-        //soutf("\nCreating an entry for $%.2f from $s with a description of: $s", amount, description);
+        System.out.printf("\nCreating an entry for $%.2f from %s with a description of: %s", amount, vendor, description);
 
         //I want the date to be current in case user spends time lingering on this option, log
         //the time of confirmation, will have to add a loop for multiple additions later, currentItem
@@ -111,16 +111,34 @@ public class MenuLogic
 
         switch (confirm)
         {
-            case "1":
-                //LocalDateTime currentTime = LocalDateTime.now();
-                //LedgerItem currentItem = new LedgerItem(currentTime, description, vendor, amount);
-                //currentItem.setDateTime();
-                //startLedger.add(currentItem); //currentLedger.getLedger.add(currentItem);
-                //shall i write to .csv or save until before exiting?
+            case "1": //move to a method?
+                try
+                {
+                    FileOutputStream fileWriter = new FileOutputStream("transactions.csv", true);
+                    PrintStream printer = new PrintStream(fileWriter);
 
-                System.out.println("Successfully added entry to ledger. Returning to home menu.");
-                homeScreen();
-                break;
+                    LocalDateTime itemTime = LocalDateTime.now();
+                    LedgerItem currentItem = new LedgerItem(currentLedger.returnNextID(), itemTime, description, vendor, amount);
+                    currentLedger.getCompleteLedger().add(currentItem); //necessary or not? updating .csv + createLedger() alternatively
+                    //shall i write to .csv or wait until before exiting?
+
+                    printer.printf("\n%s|%s|%s|%s|%s|%.2f", currentItem.getID(), currentItem.getDate(),
+                    currentItem.getTime(), currentItem.getDescription(), currentItem.getVendor(),
+                            currentItem.getAmount());
+
+                    int element = currentLedger.getCompleteLedger().size();
+                    currentLedger.getCompleteLedger().get(element).displayItem();;
+
+                    System.out.println("Successfully added entry to ledger. Returning to home menu.");
+                    homeScreen();
+                    break;
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Something went wrong. Try again.");
+                    addToLedgerScreen(choice);
+                    break;
+                }
 
             case "2":
                 System.out.println("Trying again...");

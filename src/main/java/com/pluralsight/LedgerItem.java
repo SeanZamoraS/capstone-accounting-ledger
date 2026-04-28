@@ -88,11 +88,14 @@ public class LedgerItem
 
                 line = bufferedReader.readLine(); //does this go here or at the top?
             }
+            bufferedReader.close();
+            fileReader.close();
         }
+
 
         catch (Exception ex)
         {
-            System.out.println("File not found.");
+            System.out.println("Something went wrong in getting the ledger.");
             return null;
         }
         LedgerManagement currentLedgerComplete = new LedgerManagement(currentLedger, false);

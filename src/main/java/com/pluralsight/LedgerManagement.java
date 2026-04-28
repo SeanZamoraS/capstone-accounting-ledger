@@ -37,4 +37,13 @@ public class LedgerManagement
             completeLedger.get(i).displayItem();
         }
     }
+
+    public String returnNextID()
+    {
+        int size = completeLedger.size() - 1;
+        String lastID = completeLedger.get(size).getID();
+
+        int iLastID = Integer.parseInt(lastID) + 1; //I don't know if you need the +1/-1 technically but it makes me feel better
+        return Integer.toString(iLastID);
+    }
 }
