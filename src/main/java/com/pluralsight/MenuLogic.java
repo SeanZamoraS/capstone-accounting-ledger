@@ -4,11 +4,14 @@ import java.util.*;
 import java.io.*;
 import java.time.*;
 
+import static com.pluralsight.LedgerItem.createLedger;
+
 public class MenuLogic
 {
     static Scanner input = new Scanner(System.in);
+
     //static ArrayList<LedgerItem> startLedger = new ArrayList<>();
-    //static LedgerManagement currentLedger = new LedgerManagement(startLedger);
+    static LedgerManagement currentLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
 
     public static void main()
     {
@@ -157,7 +160,11 @@ public class MenuLogic
         switch(userChoice)
         {
             case "1":
-                //currentLedger.displayAll();
+                LedgerManagement currentLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                currentLedger.displayCompleteLedger();
+                System.out.println("\nReturning to selections...\n");
                 ledgerSearchScreen();
                 //press enter to continue would be a good quality of life feature
                 break;

@@ -55,7 +55,7 @@ public class LedgerItem
 
     //methods:
 
-    public static ArrayList<LedgerItem> createLedger()
+    public static LedgerManagement createLedger()
     {
 
         ArrayList<LedgerItem> currentLedger = new ArrayList<>();
@@ -70,6 +70,7 @@ public class LedgerItem
 
             while(line != null)
             {
+                //line = bufferedReader.readLine();
                 String[] splitLine = line.split("\\|");
 
                 String id = splitLine[0];
@@ -91,12 +92,27 @@ public class LedgerItem
             System.out.println("File not found.");
             return null;
         }
-        return currentLedger;
+        LedgerManagement currentLedgerComplete = new LedgerManagement(currentLedger, false);
+        return currentLedgerComplete;
+    }
+
+    public void displayItem()
+    {
+        String id = this.id;
+        String date = this.date;
+        String time = this.time;
+        String description = this.description;
+        String vendor = this.vendor;
+        double amount = this.amount;
+
+        System.out.printf("%s|%s|%s|%s|%s|%.2f\n", id, date, time, description, vendor, amount);
     }
 
     private void assignDateTimeFromLDTObject()
     {
-        LocalDateTime itemTime = this.getCurrentTime(); //??
+        LocalDateTime itemTime = this.getCurrentTime();
+        String sItemTime = itemTime.toString();
+
 
 
 
