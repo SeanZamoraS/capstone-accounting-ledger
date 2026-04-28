@@ -169,25 +169,41 @@ public class MenuLogic
                 break;
 
             case "2":
-                //currentLedger.displayTimePurchase(2);
+                LedgerManagement monthToDay = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                monthToDay.displayTimePurchase("2");
+                System.out.println("\nReturning to selections...\n");
                 ledgerSearchScreen();
                 //""
                 break;
 
             case "3":
-                //currentLedger.displayTimePurchase(3);
+                LedgerManagement yearToDay = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                yearToDay.displayTimePurchase("3");
+                System.out.println("\nReturning to selections...\n");
                 ledgerSearchScreen();
                 //""
                 break;
 
             case "4":
-                //currentLedger.displayTimePurchase(4);
+                LedgerManagement lastMonth = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                lastMonth.displayTimePurchase("4");
+                System.out.println("\nReturning to selections...\n");
                 ledgerSearchScreen();
                 //""
                 break;
 
             case "5":
-                //currentLedger.displayTimePurchase(5);
+                LedgerManagement lastYear = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                lastYear.displayTimePurchase("5");
+                System.out.println("\nReturning to selections...\n");
                 ledgerSearchScreen();
                 //""
                 break;

@@ -110,4 +110,81 @@ public class LedgerManagement
         //just informed ArrayList have .forEach already :(
 
     }
+
+    public void displayTimePurchase(String userChoice)
+    {
+        this.modifiedLedger = calculateRequestedTimeFrame(userChoice);
+
+        if (this.modifiedLedger.isEmpty())
+        {
+            System.out.println("\nNo results found.");
+        }
+
+        modifiedLedger.stream()
+                .forEach(displayItem -> displayItem.displayItem());
+
+
+    }
+
+    private static ArrayList<LedgerItem> calculateRequestedTimeFrame(String userChoice)
+    {
+        ArrayList<LedgerItem> currentLedger = new ArrayList<>();
+        currentLedger = createLedgerArrayList();
+
+        switch (userChoice)
+        {
+            case "2": //month to date
+                LocalDateTime startofMonth = LocalDate.now().withDayOfMonth(1).atStartOfDay();
+
+                ArrayList<LedgerItem> mtdItems = currentLedger.stream()
+                        .filter(item -> item.getCurrentTime().isAfter(startofMonth))
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                return mtdItems;
+                //break;
+
+            case "3": //year to date
+                LocalDateTime startOfYear = LocalDate.now().withDayOfYear(1).atStartOfDay();
+
+                ArrayList<LedgerItem> mtyItems = currentLedger.stream()
+                        .filter(item -> item.getCurrentTime().isAfter(startOfYear))
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                return mtyItems;
+                //break;
+
+            case "4": //all last month
+                LocalDateTime startOfLastMonth = LocalDate.now().minusMonths(1)
+                        .withDayOfMonth(1).atStartOfDay();
+                LocalDateTime endOfLastMonth = LocalDate.now().withDayOfMonth(1)
+                        .minusDays(1).atTime(LocalTime.MAX);
+
+                ArrayList<LedgerItem> lastMonthItems = currentLedger.stream()
+                        .filter(item -> item.getCurrentTime().isAfter(startOfLastMonth)
+                                && item.getCurrentTime().isBefore(endOfLastMonth))
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                return lastMonthItems;
+                //break;
+
+            case "5": //all last year
+                LocalDateTime startOfLastYear = LocalDate.now().minusYears(1)
+                        .withDayOfMonth(1).atStartOfDay();
+                LocalDateTime endOfLastYear = LocalDate.now().withDayOfYear(1)
+                        .minusDays(1).atTime(LocalTime.MAX);
+
+                ArrayList<LedgerItem> lastYearItems = currentLedger.stream()
+                        .filter(item -> item.getCurrentTime().isAfter(startOfLastYear)
+                                && item.getCurrentTime().isBefore(endOfLastYear))
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                return lastYearItems;
+                //break;
+
+            default:
+                System.out.println("This is a bug.");
+                return null;
+                //break;
+        }
+    }
 }

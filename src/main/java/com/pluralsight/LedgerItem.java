@@ -37,6 +37,8 @@ public class LedgerItem
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
+
+        this.assignLDTObjectFromString();
     }
 
     //getters, setters
@@ -167,6 +169,15 @@ public class LedgerItem
 
         this.date = dateAndTime[0];
         this.time = dateAndTime[1];
+    }
+
+    private void assignLDTObjectFromString()
+    {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String completeTime = this.getDate() + " " + this.getTime();
+        LocalDateTime time = LocalDateTime.parse(completeTime, formatter);
+
+        this.currentTime = time;
     }
 
 }
