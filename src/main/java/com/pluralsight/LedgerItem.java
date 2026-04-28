@@ -102,6 +102,48 @@ public class LedgerItem
         return currentLedgerComplete;
     }
 
+    public static ArrayList<LedgerItem> createLedgerArrayList()
+    {
+
+        ArrayList<LedgerItem> currentLedger = new ArrayList<>();
+
+        try
+        {
+            FileReader fileReader = new FileReader("transactions.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line = bufferedReader.readLine();
+            line = bufferedReader.readLine();
+
+            while(line != null)
+            {
+                //line = bufferedReader.readLine();
+                String[] splitLine = line.split("\\|");
+
+                String id = splitLine[0];
+                String date = splitLine[1];
+                String time = splitLine[2];
+                String description = splitLine[3];
+                String vendor = splitLine[4];
+                double amount = Double.parseDouble(splitLine[5]);
+
+                LedgerItem currentItem = new LedgerItem(id, date, time, description, vendor, amount);
+                currentLedger.add(currentItem);
+
+                line = bufferedReader.readLine(); //does this go here or at the top?
+            }
+            bufferedReader.close();
+            fileReader.close();
+        }
+
+        catch (Exception ex)
+        {
+            System.out.println("Something went wrong in getting the ledger.");
+            return null;
+        }
+        return currentLedger;
+    }
+
     public void displayItem()
     {
         String id = this.id;

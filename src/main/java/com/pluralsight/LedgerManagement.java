@@ -3,6 +3,10 @@ package com.pluralsight;
 import java.util.*;
 import java.io.*;
 import java.time.*;
+import java.util.stream.Collectors;
+
+import static com.pluralsight.LedgerItem.createLedger;
+import static com.pluralsight.LedgerItem.createLedgerArrayList;
 
 public class LedgerManagement
 {
@@ -83,6 +87,27 @@ public class LedgerManagement
             System.out.println("Something went wrong. Try again.");
             e.printStackTrace();
         }
+    }
+
+    public void displayVendorSearch(String vendor)
+    {
+       this.completeLedger = createLedgerArrayList(); //update ledger
+
+        //trying a stream instead of a loop because a loop here is a bit annoying
+        ArrayList<LedgerItem> searchedItems = completeLedger.stream()
+                .filter(currentItem -> currentItem.getVendor().equalsIgnoreCase(vendor))
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        this.modifiedLedger = searchedItems; //not necessary due to stream but here just in case
+
+        if (this.modifiedLedger.isEmpty())
+        {
+            System.out.println("\nNo results found.");
+        }
+        //trying another stream just for fun
+        searchedItems.stream()
+                .forEach(displayItem -> displayItem.displayItem());
+        //just informed ArrayList have .forEach already :(
 
     }
 }

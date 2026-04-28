@@ -22,7 +22,7 @@ public class MenuLogic
     { //using recursion for menus for now for MVP purposes, change to while later(?)
         System.out.println("""
                 
-                LEDGER MANAGEMENT APP:
+                LEDGER MANAGEMENT APP HOME:
                 
                 Please enter one of the following options 
                 (1, 2, 3, or 0):
@@ -194,9 +194,14 @@ public class MenuLogic
 
             case "9":
                 System.out.println("\nWhat is the name of the vendor you would like to search for?\n");
+                LedgerManagement searchLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
 
                 String userVendor = input.nextLine();
-                //displayVendorSearch(userVendor);
+                System.out.println("""
+                        
+                        Found these entries:""");
+                searchLedger.displayVendorSearch(userVendor);
+                System.out.println("\nReturning to selections.\n");
                 //""
                 ledgerSearchScreen();
                 break;
