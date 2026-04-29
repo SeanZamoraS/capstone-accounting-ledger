@@ -164,9 +164,10 @@ public class MenuLogic
                 System.out.println();
 
                 currentLedger.displayCompleteLedger();
+                TextManagement.pressEnterToContinue();
                 System.out.println("\nReturning to selections...\n");
+
                 ledgerSearchScreen();
-                //press enter to continue would be a good quality of life feature
                 break;
 
             case "2":
