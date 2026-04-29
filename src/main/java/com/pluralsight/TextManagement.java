@@ -6,7 +6,7 @@ import static com.pluralsight.MenuLogic.input;
 
 public class TextManagement //just a class for organization purposes
 {
-    public static void cleanCSV()
+    public static void cleanCSV() //tested and seems to work as intended, be careful though
     {
         File originalFile = new File("transactions.csv");
         File cleanedFile = new File("transactionsTEMP.csv");
@@ -41,7 +41,12 @@ public class TextManagement //just a class for organization purposes
         }
 
         originalFile.delete();
-        cleanedFile.renameTo(originalFile);
+        boolean success = cleanedFile.renameTo(originalFile);
+
+        if (success == false)
+        {
+            System.out.println("File unable to be renamed during file cleaning. Look for transactionsTEMP.csv");
+        }
     }
 
     public static double receiveValidDouble() //ripped from theater-reservations project

@@ -110,6 +110,7 @@ public class MenuLogic
                     currentLedger.writeToLedger(choice, description, vendor, amount);
 
                     System.out.println("Successfully added entry to ledger. Returning to home menu.");
+                    TextManagement.cleanCSV();
                     homeScreen();
                     break;
                 }
