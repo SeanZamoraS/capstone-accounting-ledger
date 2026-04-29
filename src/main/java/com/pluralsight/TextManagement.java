@@ -75,7 +75,7 @@ public class TextManagement //just a class for organization purposes
         {
             if ((userInput.isEmpty() || userInput.isBlank()))
             {
-                System.out.printf("\nPlease enter a %s.\n", word);
+                System.out.printf("\nPlease enter a %s.\n\n", word);
                 userInput = input.nextLine();
             }
 

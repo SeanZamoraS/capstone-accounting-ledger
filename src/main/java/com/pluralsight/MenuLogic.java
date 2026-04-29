@@ -30,7 +30,7 @@ public class MenuLogic
                 2) Add a payment/invoice to the ledger
                 3) Check ledger
                 
-                0) Exit program\n\n""");
+                0) Exit program\n""");
 
         String userInput = input.nextLine();
 
