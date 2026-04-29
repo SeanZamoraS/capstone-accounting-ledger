@@ -4,13 +4,13 @@ import java.util.*;
 import java.io.*;
 import java.time.*;
 
-import static com.pluralsight.LedgerItem.createLedger;
+//import static com.pluralsight.LedgerItem.createLedger;
 
 public class MenuLogic
 {
     static Scanner input = new Scanner(System.in);
 
-    static LedgerManagement currentLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
+    static LedgerManagement currentLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
 
     public static void main()
     {
@@ -32,7 +32,7 @@ public class MenuLogic
                 
                 0) Exit program\n""");
 
-        String userInput = input.nextLine();
+        String userInput = input.nextLine().strip();
 
         switch (userInput)
         {
@@ -148,6 +148,9 @@ public class MenuLogic
                 4) Transactions: Last Month
                 5) Transactions: Last Year
                 
+                6) Transactions: All expenses
+                7) Transactions: All income
+                
                 9) Search by vendor
                 
                 0) Return to home screen\n""");
@@ -157,7 +160,7 @@ public class MenuLogic
         switch(userChoice)
         {
             case "1":
-                LedgerManagement currentLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                LedgerManagement currentLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
                 System.out.println();
 
                 currentLedger.displayCompleteLedger();
@@ -167,7 +170,7 @@ public class MenuLogic
                 break;
 
             case "2":
-                LedgerManagement monthToDay = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                LedgerManagement monthToDay = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
                 System.out.println();
 
                 monthToDay.displayTimePurchase("2");
@@ -177,7 +180,7 @@ public class MenuLogic
                 break;
 
             case "3":
-                LedgerManagement yearToDay = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                LedgerManagement yearToDay = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
                 System.out.println();
 
                 yearToDay.displayTimePurchase("3");
@@ -187,7 +190,7 @@ public class MenuLogic
                 break;
 
             case "4":
-                LedgerManagement lastMonth = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                LedgerManagement lastMonth = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
                 System.out.println();
 
                 lastMonth.displayTimePurchase("4");
@@ -197,7 +200,7 @@ public class MenuLogic
                 break;
 
             case "5":
-                LedgerManagement lastYear = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                LedgerManagement lastYear = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
                 System.out.println();
 
                 lastYear.displayTimePurchase("5");
@@ -206,9 +209,29 @@ public class MenuLogic
                 //""
                 break;
 
+            case "6":
+                LedgerManagement expenses = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                expenses.displayMoneyInOrOut(1);
+                System.out.println("\nReturning to selections...\n");
+                ledgerSearchScreen();
+                //""
+                break;
+
+            case "7":
+                LedgerManagement income = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                System.out.println();
+
+                income.displayMoneyInOrOut(2);
+                System.out.println("\nReturning to selections...\n");
+                ledgerSearchScreen();
+                //""
+                break;
+
             case "9":
                 System.out.println("\nWhat is the name of the vendor you would like to search for?\n");
-                LedgerManagement searchLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
+                LedgerManagement searchLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
 
                 String userVendor = input.nextLine();
                 System.out.println("""

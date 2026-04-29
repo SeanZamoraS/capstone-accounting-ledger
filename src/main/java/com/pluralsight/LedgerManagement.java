@@ -5,8 +5,8 @@ import java.io.*;
 import java.time.*;
 import java.util.stream.Collectors;
 
-import static com.pluralsight.LedgerItem.createLedger;
-import static com.pluralsight.LedgerItem.createLedgerArrayList;
+//import static com.pluralsight.LedgerItem.createLedger;
+//import static com.pluralsight.LedgerItem.createLedgerArrayList;
 
 public class LedgerManagement
 {
@@ -89,9 +89,36 @@ public class LedgerManagement
         }
     }
 
+    public void displayMoneyInOrOut(int choice)
+    {
+        this.completeLedger = LedgerItem.createLedgerArrayList();
+
+        ArrayList<LedgerItem> searchedItems = null;
+
+        if (choice == 1)
+        {
+            searchedItems = completeLedger.stream()
+                    .filter(currentItem -> currentItem.getAmount() <= 0)
+                    .collect(Collectors.toCollection(ArrayList::new));
+        }
+
+        else if (choice == 2)
+        {
+            searchedItems = completeLedger.stream()
+                    .filter(currentItem -> currentItem.getAmount() >= 0)
+                    .collect(Collectors.toCollection(ArrayList::new));
+        }
+
+        this.modifiedLedger = searchedItems;
+
+        modifiedLedger.stream()
+                .forEach(currentItem -> currentItem.displayItem());
+
+    }
+
     public void displayVendorSearch(String vendor)
     {
-       this.completeLedger = createLedgerArrayList(); //update ledger
+       this.completeLedger = LedgerItem.createLedgerArrayList(); //update ledger
 
         //trying a stream instead of a loop because a loop here is a bit annoying
         ArrayList<LedgerItem> searchedItems = completeLedger.stream()
@@ -129,7 +156,7 @@ public class LedgerManagement
     private static ArrayList<LedgerItem> calculateRequestedTimeFrame(String userChoice)
     {
         ArrayList<LedgerItem> currentLedger = new ArrayList<>();
-        currentLedger = createLedgerArrayList();
+        currentLedger = LedgerItem.createLedgerArrayList();
 
         switch (userChoice)
         {
