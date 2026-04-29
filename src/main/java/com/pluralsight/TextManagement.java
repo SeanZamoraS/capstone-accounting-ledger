@@ -6,7 +6,7 @@ import static com.pluralsight.MenuLogic.input;
 
 public class TextManagement //just a class for organization purposes
 {
-    static Scanner enterScanner = new Scanner(System.in);
+    //static Scanner enterScanner = new Scanner(System.in);
 
     public static void cleanCSV() //tested and seems to work as intended, be careful though
     {
@@ -91,6 +91,6 @@ public class TextManagement //just a class for organization purposes
     public static void pressEnterToContinue()
     {
         System.out.println("\nPress enter to continue...");
-        enterScanner.nextLine();
+        input.nextLine();
     }
 }
