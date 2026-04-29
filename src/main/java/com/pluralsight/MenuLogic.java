@@ -175,9 +175,10 @@ public class MenuLogic
                 System.out.println();
 
                 monthToDay.displayTimePurchase("2");
+                TextManagement.pressEnterToContinue();
                 System.out.println("\nReturning to selections...\n");
+
                 ledgerSearchScreen();
-                //""
                 break;
 
             case "3":
@@ -186,8 +187,9 @@ public class MenuLogic
 
                 yearToDay.displayTimePurchase("3");
                 System.out.println("\nReturning to selections...\n");
+                TextManagement.pressEnterToContinue();
+
                 ledgerSearchScreen();
-                //""
                 break;
 
             case "4":
@@ -196,8 +198,9 @@ public class MenuLogic
 
                 lastMonth.displayTimePurchase("4");
                 System.out.println("\nReturning to selections...\n");
+                TextManagement.pressEnterToContinue();
+
                 ledgerSearchScreen();
-                //""
                 break;
 
             case "5":
@@ -206,8 +209,9 @@ public class MenuLogic
 
                 lastYear.displayTimePurchase("5");
                 System.out.println("\nReturning to selections...\n");
+                TextManagement.pressEnterToContinue();
+
                 ledgerSearchScreen();
-                //""
                 break;
 
             case "6":
@@ -216,8 +220,9 @@ public class MenuLogic
 
                 expenses.displayMoneyInOrOut(1);
                 System.out.println("\nReturning to selections...\n");
+                TextManagement.pressEnterToContinue();
+
                 ledgerSearchScreen();
-                //""
                 break;
 
             case "7":
@@ -226,8 +231,9 @@ public class MenuLogic
 
                 income.displayMoneyInOrOut(2);
                 System.out.println("\nReturning to selections...\n");
+                TextManagement.pressEnterToContinue();
+
                 ledgerSearchScreen();
-                //""
                 break;
 
             case "9":
@@ -239,8 +245,9 @@ public class MenuLogic
                         
                         Found these entries:""");
                 searchLedger.displayVendorSearch(userVendor);
+                TextManagement.pressEnterToContinue();
                 System.out.println("\nReturning to selections.\n");
-                //""
+
                 ledgerSearchScreen();
                 break;
 
