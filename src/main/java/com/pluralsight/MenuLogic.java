@@ -252,4 +252,36 @@ public class MenuLogic
                 break;
         }
     }
+
+    public static void selectAFile()
+    {
+        System.out.println("""
+                Starting up the financial ledger program...
+                
+                In order to proceed, select an option to create a ledger.
+                
+                1) Load from file
+                2) Create a new blank ledger
+                3) Use the example template ledger
+                
+                """);
+
+        String userChoice = input.nextLine();
+
+        switch (userChoice)
+        {
+            case "1":
+                break;
+
+            case "2":
+                break;
+
+            case "3":
+                break;
+
+            default:
+                break;
+        }
+
+    }
 }
