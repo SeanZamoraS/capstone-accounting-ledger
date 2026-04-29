@@ -10,7 +10,6 @@ public class MenuLogic
 {
     static Scanner input = new Scanner(System.in);
 
-    //static ArrayList<LedgerItem> startLedger = new ArrayList<>();
     static LedgerManagement currentLedger = new LedgerManagement(createLedger().getCompleteLedger(), false);
 
     public static void main()
@@ -70,14 +69,12 @@ public class MenuLogic
         {
             case 1:
                 System.out.println("How much did you spend? (positive number)\n");
-                //double input exception handler goes here
-                amount = input.nextDouble();
+                amount = TextManagement.receiveValidDouble();
                 break;
 
             case 2:
-                System.out.println("How much did were you paid?\n");
-                //double input exception handler goes here
-                amount = input.nextDouble();
+                System.out.println("How much were you paid?\n");
+                amount = TextManagement.receiveValidDouble();
                 break;
 
             default:
@@ -86,11 +83,11 @@ public class MenuLogic
         }
 
         System.out.println("\nWhat vendor/person did you have the transaction with?\n");
-        input.nextLine();
-        String vendor = input.nextLine();
+        input.nextLine(); //to eat line after double?
+        String vendor = TextManagement.receiveValidString("vendor");
 
         System.out.println("\nPlease enter a description for the transaction: \n");
-        String description = input.nextLine();
+        String description = TextManagement.receiveValidString("description");
 
         System.out.printf("\nCreating an entry for $%.2f from %s with a description of: %s\n", amount, vendor, description);
 
@@ -224,6 +221,10 @@ public class MenuLogic
 
             case "0":
                 homeScreen();
+                break;
+
+            default:
+                ledgerSearchScreen();
                 break;
         }
     }

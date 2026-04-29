@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.nio.Buffer;
+
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.*;
@@ -155,7 +155,7 @@ public class LedgerItem
         String vendor = this.vendor;
         double amount = this.amount;
 
-        System.out.printf("%s|%s|%s|%s|%s|%.2f\n", id, date, time, description, vendor, amount);
+        System.out.printf("\n%s|%s|%s|%s|%s|%.2f\n", id, date, time, description, vendor, amount);
     }
 
     private void assignDateTimeFromLDTObject()
