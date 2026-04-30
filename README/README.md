@@ -25,9 +25,12 @@ period (".") character is allowed to represent number of cents.
 
 On the home screen there are 4 options. Entering 1 or 2 will begin the prompt to enter
 information to the ledger, with 1 being for recording purchases and 2 being for recording
-being paid. Once all the questions in that prompt are answered and confirmed, the infomration should be available
+being paid. Once all the questions in that prompt are answered and confirmed, the information should be available
 on the ledger. 
 
 In addition, entering 0 will end the program. 
 
-Entering 3 on the home screen will bring up a new menu. 
+Entering 3 on the home screen will bring up a new menu that had options to display the whole ledger
+or parts of the ledger. 
+
+### Design notes:

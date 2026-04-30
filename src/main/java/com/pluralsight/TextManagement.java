@@ -6,7 +6,7 @@ import static com.pluralsight.MenuLogic.input;
 
 public class TextManagement //just a class for organization purposes
 {
-    public static void cleanCSV() //tested and seems to work as intended, be careful though
+    public static void cleanCSV() //tested and ***SEEMS*** to work as intended, be careful though
     {
         File originalFile = new File("transactions.csv");
         File cleanedFile = new File("transactionsTEMP.csv");
@@ -41,7 +41,7 @@ public class TextManagement //just a class for organization purposes
         }
 
         originalFile.delete();
-        boolean success = cleanedFile.renameTo(originalFile);
+        boolean success = cleanedFile.renameTo(originalFile); //renameTo() also returns true or false
 
         if (success == false)
         {
