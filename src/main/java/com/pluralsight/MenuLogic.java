@@ -136,128 +136,122 @@ public class MenuLogic
 
     public static void ledgerSearchScreen()
     {
-        System.out.println("""
-                Which part of the ledger would you like to view?
-                
-                Please enter one of the following options
-                (1, 2, 3, 4, 5, 9, or 0):
-                
-                1) Display entire ledger
-                2) Transactions: Month to Today's Date
-                3) Transactions: Year to Today's Date
-                4) Transactions: Last Month
-                5) Transactions: Last Year
-                
-                6) Transactions: All expenses
-                7) Transactions: All income
-                
-                9) Search by vendor
-                
-                0) Return to home screen\n""");
-
-        String userChoice = input.nextLine();
-
-        switch(userChoice)
+        while (true)
         {
-            case "1":
-                LedgerManagement currentLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+            System.out.println("""
+                    Which part of the ledger would you like to view?
+                    
+                    Please enter one of the following options
+                    (1, 2, 3, 4, 5, 9, or 0):
+                    
+                    1) Display entire ledger
+                    2) Transactions: Month to Today's Date
+                    3) Transactions: Year to Today's Date
+                    4) Transactions: Last Month
+                    5) Transactions: Last Year
+                    
+                    6) Transactions: All expenses
+                    7) Transactions: All income
+                    
+                    9) Search by vendor
+                    
+                    0) Return to home screen\n""");
 
-                currentLedger.displayCompleteLedger();
-                TextManagement.pressEnterToContinue();
-                System.out.println("\nReturning to selections...\n");
+            String userChoice = input.nextLine();
 
-                ledgerSearchScreen();
-                break;
+            switch(userChoice)
+            {
+                case "1":
+                    LedgerManagement currentLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "2":
-                LedgerManagement monthToDay = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+                    currentLedger.displayCompleteLedger();
+                    TextManagement.pressEnterToContinue();
+                    System.out.println("\nReturning to selections...\n");
 
-                monthToDay.displayTimePurchase("2");
-                TextManagement.pressEnterToContinue();
-                System.out.println("\nReturning to selections...\n");
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "2":
+                    LedgerManagement monthToDay = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "3":
-                LedgerManagement yearToDay = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+                    monthToDay.displayTimePurchase("2");
+                    TextManagement.pressEnterToContinue();
+                    System.out.println("\nReturning to selections...\n");
 
-                yearToDay.displayTimePurchase("3");
-                System.out.println("\nReturning to selections...\n");
-                TextManagement.pressEnterToContinue();
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "3":
+                    LedgerManagement yearToDay = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "4":
-                LedgerManagement lastMonth = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+                    yearToDay.displayTimePurchase("3");
+                    System.out.println("\nReturning to selections...\n");
+                    TextManagement.pressEnterToContinue();
 
-                lastMonth.displayTimePurchase("4");
-                System.out.println("\nReturning to selections...\n");
-                TextManagement.pressEnterToContinue();
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "4":
+                    LedgerManagement lastMonth = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "5":
-                LedgerManagement lastYear = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+                    lastMonth.displayTimePurchase("4");
+                    System.out.println("\nReturning to selections...\n");
+                    TextManagement.pressEnterToContinue();
 
-                lastYear.displayTimePurchase("5");
-                System.out.println("\nReturning to selections...\n");
-                TextManagement.pressEnterToContinue();
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "5":
+                    LedgerManagement lastYear = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "6":
-                LedgerManagement expenses = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+                    lastYear.displayTimePurchase("5");
+                    System.out.println("\nReturning to selections...\n");
+                    TextManagement.pressEnterToContinue();
 
-                expenses.displayMoneyInOrOut(1);
-                System.out.println("\nReturning to selections...\n");
-                TextManagement.pressEnterToContinue();
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "6":
+                    LedgerManagement expenses = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "7":
-                LedgerManagement income = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
-                System.out.println();
+                    expenses.displayMoneyInOrOut(1);
+                    System.out.println("\nReturning to selections...\n");
+                    TextManagement.pressEnterToContinue();
 
-                income.displayMoneyInOrOut(2);
-                System.out.println("\nReturning to selections...\n");
-                TextManagement.pressEnterToContinue();
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "7":
+                    LedgerManagement income = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    System.out.println();
 
-            case "9":
-                System.out.println("\nWhat is the name of the vendor you would like to search for?\n");
-                LedgerManagement searchLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
+                    income.displayMoneyInOrOut(2);
+                    System.out.println("\nReturning to selections...\n");
+                    TextManagement.pressEnterToContinue();
 
-                String userVendor = input.nextLine();
-                System.out.println("""
-                        
-                        Found these entries:""");
-                searchLedger.displayVendorSearch(userVendor);
-                TextManagement.pressEnterToContinue();
-                System.out.println("\nReturning to selections.\n");
+                    continue;
 
-                ledgerSearchScreen();
-                break;
+                case "9":
+                    System.out.println("\nWhat is the name of the vendor you would like to search for?\n");
+                    LedgerManagement searchLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
 
-            case "0":
-                homeScreen();
-                break;
+                    String userVendor = input.nextLine();
+                    System.out.println("""
+                            
+                            Found these entries:""");
+                    searchLedger.displayVendorSearch(userVendor);
+                    TextManagement.pressEnterToContinue();
+                    System.out.println("\nReturning to selections.\n");
 
-            default:
-                ledgerSearchScreen();
-                break;
+                    continue;
+
+                case "0":
+                    homeScreen();
+                    return;
+
+                default:
+                    continue;
+            }
         }
     }
 

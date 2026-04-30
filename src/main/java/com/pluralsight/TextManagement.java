@@ -86,7 +86,7 @@ public class TextManagement //just a class for organization purposes
         }
     }
 
-    public static void pressEnterToContinue()
+    public static void pressEnterToContinue() //bug related to recursion???
     {
         System.out.println("\nPress enter to continue...");
         input.nextLine();
