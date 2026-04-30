@@ -146,11 +146,6 @@ public class LedgerItem
         return currentLedger;
     }
 
-    public static LedgerManagement createLedgerObjectFromFile()
-    {
-        return null;
-    }
-
     public void displayItem()
     {
         String id = this.id;

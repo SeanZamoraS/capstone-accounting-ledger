@@ -82,7 +82,7 @@ public class MenuLogic
                 break;
         }
 
-        System.out.println("\nWhat vendor/person did you have the transaction with?\n");
+        System.out.println("\nWhat vendor/person was the transaction with?\n");
         input.nextLine(); //to eat line after double?
         String vendor = TextManagement.receiveValidString("vendor");
 
@@ -261,10 +261,10 @@ public class MenuLogic
         }
     }
 
-    public static void selectAFile()
+    public static void selectAFile() //saving for the next update, too risky to start a day before demo
     {
         System.out.println("""
-                Starting up the financial ledger program...
+                Starting up the ledger management program...
                 
                 In order to proceed, select an option to create a ledger.
                 
@@ -279,12 +279,15 @@ public class MenuLogic
         switch (userChoice)
         {
             case "1":
+                //loadFromFile()
                 break;
 
             case "2":
+                //startBlankLedger()
                 break;
 
             case "3":
+                //loadFromExample()
                 break;
 
             default:
