@@ -68,7 +68,7 @@ public class MenuLogic
         switch (choice)
         {
             case 1:
-                System.out.println("How much did you spend? (positive number)\n");
+                System.out.println("How much did you spend? (positive numbers ok, will convert automatically)\n");
                 amount = TextManagement.receiveValidDouble();
                 break;
 

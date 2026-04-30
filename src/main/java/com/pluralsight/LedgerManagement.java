@@ -64,11 +64,12 @@ public class LedgerManagement
             LedgerItem currentItem = null;
             if (choice == 1)
             {
-                amount = amount * -1;
+                amount = Math.abs(amount) * -1;
                 currentItem = new LedgerItem(this.returnNextID(), itemTime, description, vendor, amount);
             }
             else if (choice == 2)
             {
+                amount = Math.abs(amount) * 1;
                 currentItem = new LedgerItem(this.returnNextID(), itemTime, description, vendor, amount);
             }
             this.getCompleteLedger().add(currentItem); //necessary or not? updating .csv + createLedger() alternatively
