@@ -39,6 +39,7 @@ There is also a search by vendor option on this screen.
 In no particular order, here are some of the quirks of the application: 
 
 - Searching by vendor matches exact names only at this point.
-- Time stamps are based on the time a transaction is entered into the ledger, not on the time of purchase. 
+- Time stamps are based on the time a transaction is entered into the ledger, not on the time of purchase. I feel this would be useful accountability in creating transactions on the ledger. In the future, I would also think about adding a purchase date user input though, I just didn't think about it at the time.  
 - In order to resolve line spacing issues in reading from a file, each time the ledger is modified, the ledger file is destroyed and rewritten without spaces. (During development, I would often open the file and accidentally put spaces in. I also had difficulty with coming up with a way to not leave blank space at the end of the file when writing to it.) 
 - I figured out how to use streams halfway through this project so there are some included. 
+- I left many original comments throughout the code to show areas where I am uncertain or working through an issue.

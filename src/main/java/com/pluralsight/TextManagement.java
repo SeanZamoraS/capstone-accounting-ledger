@@ -87,8 +87,36 @@ public class TextManagement //just a class for organization purposes
     }
 
     public static void pressEnterToContinue() //bug related to recursion???
+            //update: bug related to IntelliJ terminal according to Gregor
     {
-        System.out.println("\nPress enter to continue...");
-        input.nextLine();
+        System.out.println("\u001B[35m\nPress enter to continue...\u001B[0m");
+        String confirm = input.nextLine();
+    }
+
+    public static void flashColorsText(String text) throws InterruptedException
+    {
+        String startPurple = "\u001B[35m";
+        String startWhite = "\u001B[37m";
+        String end = "\u001B[0m";
+
+        int count = 1;
+
+        while (count < 90)
+        {
+            if (count % 2 == 0)
+            {
+                count++;
+                System.out.print("\r" + startPurple + text + end);
+                Thread.sleep(60);
+            }
+
+            else
+            {
+                count++;
+                System.out.print("\r" + startWhite + text + end);
+                Thread.sleep(30);
+            }
+        }
+
     }
 }

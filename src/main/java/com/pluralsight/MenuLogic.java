@@ -12,12 +12,12 @@ public class MenuLogic
 
     static LedgerManagement currentLedger = new LedgerManagement(LedgerItem.createLedger().getCompleteLedger(), false);
 
-    public static void main()
+    public static void main() throws InterruptedException
     {
         homeScreen();
     }
 
-    public static void homeScreen()
+    public static void homeScreen() throws InterruptedException
     { //using recursion for menus for now for MVP purposes, change to while later(?)
         System.out.println("""
                 
@@ -27,7 +27,7 @@ public class MenuLogic
                 (1, 2, 3, or 0):
                 
                 1) Add a purchase to the ledger
-                2) Add a payment/invoice to the ledger
+                2) Add a payment to the ledger
                 3) Check ledger
                 
                 0) Exit program\n""");
@@ -49,7 +49,7 @@ public class MenuLogic
                 break;
 
             case "0":
-                System.out.println("\nThank you for using the ledger management app. Goodbye!");
+                TextManagement.flashColorsText("Thank you for using the ledger management app. Goodbye!");
                 System.exit(0);
                 break;
 
@@ -134,7 +134,7 @@ public class MenuLogic
 
     }
 
-    public static void ledgerSearchScreen()
+    public static void ledgerSearchScreen() throws InterruptedException
     {
         while (true)
         {
